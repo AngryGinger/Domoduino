@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Domoduino</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" />
+		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+	</head>
+	<body>
+		<div data-role="page">
+			<div data-role="header" data-theme="b">
+				<h1>Domoduino - Contrôle des accès</h1>
+			</div>
+			<div role="main" class="ui-content">
+				<h2>Commande du portail :</h2>
+				<button class="ui-btn ui-shadow portail_manu">Commande Manuelle</button>
+				<button class="ui-btn ui-shadow portail_auto">Commande Automatique</button>
+				<br>
+				<h2>Commande du garrage :</h2>
+				<button class="ui-btn ui-shadow garrage_manu">Commande Manuelle</button>
+			</div>
+			<div data-role="footer">
+				<h1>Domoduino - Version 0.1</h1>
+			</div>
+		</div>
+	<script type="text/javascript">
+		$(document).ready(function()
+			{
+  				$(".portail_manu").click(function()
+  					{
+						// Commande Manuelle du portail //
+						$.post("?cmd=portail_manu");
+						toastr.options = 
+							{
+  								"closeButton": false,
+  								"debug": false,
+  								"positionClass": "toast-top-full-width",
+  								"onclick": null,
+  								"showDuration": "300",
+  								"hideDuration": "1000",
+  								"timeOut": "5000",
+  								"extendedTimeOut": "1000",
+  								"showEasing": "swing",
+  								"hideEasing": "linear",
+  								"showMethod": "fadeIn",
+  								"hideMethod": "fadeOut"
+							};
+
+						toastr.success('Commande envoyée ! :-)');
+		
+  					});
+
+  			$(".portail_auto").click(function()
+  				{
+  					// Commande Automatique du portail //
+  					$.post("?cmd=portail_auto");
+  		
+  					toastr.options = 
+						{
+  							"closeButton": false,
+  							"debug": false,
+  							"positionClass": "toast-top-full-width",
+  							"onclick": null,
+  							"showDuration": "300",
+  							"hideDuration": "1000",
+  							"timeOut": "5000",
+  							"extendedTimeOut": "1000",
+  							"showEasing": "swing",
+  							"hideEasing": "linear",
+  							"showMethod": "fadeIn",
+  							"hideMethod": "fadeOut"
+						};
+
+					toastr.success('Commande envoyée ! :-)');
+					toastr.info('Le portail se refermera dans 3 min !');
+  				});
+
+			});
+	</script>
+	</body>
+</html>
